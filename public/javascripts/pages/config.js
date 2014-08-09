@@ -184,12 +184,14 @@
         $scope.branch = $.extend(true, $scope.branch, master);
         $scope.branch.name = name;
         initBranch($scope.branch);
+        $scope.saveGeneralBranch(true);
       } else {
-        var yes = confirm("Are you sure you want to discard customizations on "+$scope.branch.name+" and instead mirror the master branch?")
-        if (! yes) return;
-        $scope.branch.mirror_master = true;
+        bootbox.confirm('Really discard customizations on '+$scope.branch.name+' and instead mirror the master branch?', function (really) {
+          if (!really) return;
+          $scope.branch.mirror_master = true;
+          $scope.saveGeneralBranch(true);
+        });
       }
-      $scope.saveGeneralBranch(true);
     };
 
     $scope.setRunner = function (name) {
