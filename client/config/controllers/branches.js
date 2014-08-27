@@ -3,6 +3,9 @@
 var $ = require('jquery');
 var branches = global.branches || [];
 var allBranches = global.allBranches || [];
+var _ = { 
+  find: require('lodash.find')
+}
 
 function BranchesController($scope) {
   $scope.branchName = ''
@@ -33,6 +36,13 @@ function BranchesController($scope) {
         }
       })
     }
+  }
+
+  $scope.validateBranchName = function () {
+    var name = $scope.branchName
+    if (!name) return false;
+    var dupe = _.find($scope.branches, { name: name.trim() })
+    $scope.branchForm.name.$setValidity('uniqueness', !dupe)
   }
 
   $scope.add = function () {

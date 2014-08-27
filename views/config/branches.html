@@ -17,6 +17,7 @@
                      autocomplete="off"
                      typeahead="branch for branch in allBranches | filter:$viewValue"
                      typeahead-template-url="/ui-bootstrap/template/typeahead/typeahead-popup.html"
+                     ng-change="validateBranchName()"
                      type="text" required
                      name="name" placeholder="branch name"
                      class="span4"/>
