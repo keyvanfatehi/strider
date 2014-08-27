@@ -9,16 +9,6 @@ module.exports = {
       'jquery': 'jQuery'
     }
   },
-  sortable: {
-    exports: 'Sortable'
-  },
-  ngSortableDirective: {
-    exports: 'ngSortableDirective',
-    depends: {
-      'angular': 'angular',
-      'sortable': 'Sortable'
-    }
-  },
   'ui-bootstrap': {
     depends: {
       'angular': 'angular'
@@ -37,11 +27,6 @@ module.exports = {
     depends: {
       'angular': 'angular',
       'codemirror': 'CodeMirror'
-    }
-  },
-  'ui-sortable': {
-    depends: {
-      'angular': 'angular'
     }
   },
   timeago: {
