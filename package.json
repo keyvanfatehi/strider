@@ -90,8 +90,7 @@
     "codemirror": "./bower_components/codemirror/lib/codemirror.js",
     "timeago": "./bower_components/jquery-timeago/jquery.timeago.js",
     "ui-codemirror": "./public/libs/ui-codemirror.js",
-    "ui-bootstrap": "./public/libs/ui-bootstrap.js",
-    "ui-sortable": "./public/libs/ui-sortable.js"
+    "ui-bootstrap": "./public/libs/ui-bootstrap.js"
   },
   "browserify-shim": "./shim.js",
   "browserify": {
