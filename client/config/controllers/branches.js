@@ -23,6 +23,7 @@ function BranchesController($scope) {
         data: { name: item.name },
         success: function(data, ts, xhr) {
           remove($scope.branches, item)
+          $scope.refreshBranchUI();
           $scope.success(item.name + ' is no longer a configured branch.', true)
         },
         error: function(xhr, ts, e) {
@@ -45,6 +46,10 @@ function BranchesController($scope) {
     $scope.branchForm.name.$setValidity('uniqueness', !dupe)
   }
 
+  $scope.refreshBranchUI = function () {
+    $scope.$reactBranches.setProps({ items: $scope.branches })
+  }
+
   $scope.add = function () {
     var data = { name: $scope.branchName }
 
@@ -57,6 +62,7 @@ function BranchesController($scope) {
         $scope.branchName = ''
         if (res.created) {
           $scope.branches.push(res.branch)
+          $scope.refreshBranchUI();
         }
         $scope.success(res.message, true, !res.created)
       },

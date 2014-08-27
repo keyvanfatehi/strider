@@ -27,24 +27,7 @@
       </div>
     </div>
     <div class="row-fluid">
-      <div class="span6">
-        <ol class="branch-list"
-          ng-sortable="changeBranchOrder"
-          ng-sortable-key="name"
-          ng-model="branches">
-          <li class="branch-item moveable"
-            ng-repeat="branch in branches"
-            ng-sortable-id="[[branch.name]]">
-            <span class="remove">
-              <i ng-switch-when="true" class="fa fa-cog fa-spin"></i>
-              <span class="clickable" ng-hide="branch.name === 'master'" ng-click="remove(branch)">
-                <i class="fa fa-remove"></i>
-              </span>
-            </span>
-            <span class="branch-name" ng-class="{ismaster: branch.name === 'master'}">[[branch.name]]</span>
-          </li>
-        </ol>
-      </div>
+      <div class="span6" react-branches></div>
     </div>
   </fieldset>
 </div>
