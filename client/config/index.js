@@ -12,6 +12,7 @@ var HerokuController = require('./controllers/heroku');
 var GithubController = require('./controllers/github');
 var interpolate = require('./configs/interpolate');
 var reactBranchesDirective = require('./directives/react_branches');
+var reactPickpluginsDirective = require('./directives/react_pick_plugins');
 
 var app = angular.module('config', ['ui.bootstrap', 'ui.codemirror', 'alerts', 'moment'])
   .config(['$interpolateProvider', interpolate])
@@ -25,5 +26,6 @@ var app = angular.module('config', ['ui.bootstrap', 'ui.codemirror', 'alerts', '
   .controller('HerokuController', ['$scope', HerokuController])
   .controller('GithubCtrl', ['$scope', GithubController])
   .directive('reactBranches', reactBranchesDirective)
+  .directive('reactPickplugins', reactPickpluginsDirective)
 
 module.exports = app;
