@@ -30,6 +30,7 @@
     "lodash.filter": "^2.4.1",
     "lodash.find": "^2.4.1",
     "lodash.findindex": "^2.4.1",
+    "lodash.isequal": "^2.4.1",
     "lodash.map": "^2.4.1",
     "loggly": "~0.3.11",
     "mailer": "~0.6.7",

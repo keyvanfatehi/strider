@@ -202,13 +202,7 @@ function ConfigController($scope, $element, $sce) {
     });
   }
 
-  $scope.reorderPlugins = function(list) {
-    $scope.branch.plugins = list;
-    savePluginOrder();
-  };
-
-  $scope.enablePlugin = function (target, index, event) {
-    event.removeDragEl();
+  $scope.enablePlugin = function (target, index, order) {
     // add to enabled list
     $scope.branch.plugins.splice(index, 0, target);
     // enable it
@@ -216,28 +210,17 @@ function ConfigController($scope, $element, $sce) {
     // remove from disabled list
     var disabled = $scope.disabled_plugins[$scope.branch.name];
     disabled.splice(_.indexOf(_.pluck(disabled, 'id'), target.id), 1);
+    if (order) order()
     updateConfigured()
   };
 
-  $scope.disablePlugin = function (target, index, event) {
-    event.removeDragEl();
+  $scope.disablePlugin = function (target, index) {
     // add it to the disabled list
     $scope.disabled_plugins[$scope.branch.name].splice(index, 0, target);
     // remove it from enabled list
     var enabled = $scope.branch.plugins;
     enabled.splice(_.indexOf(_.pluck(enabled, 'id'), target.id), 1);
     updateConfigured()
-  };
-
-  $scope.setImgStyle = function (plugin) {
-    var plugins = $scope.plugins
-      , icon = plugins[plugin.id].icon
-      , bg = null;
-    if (icon)
-      bg = "url('/ext/"+plugin.id+"/"+plugins[plugin.id].icon+"')";
-    plugin.imgStyle = {
-      'background-image': bg
-    }
   };
 
   function initBranch(branch) {
