@@ -9,10 +9,12 @@ module.exports = function (React) {
     render: function() {
       var classTail = (this.props.enabled ? '' : 'disabled')
       var className = "plugin-item moveable clearfix "+classTail
-      console.log('!!', this.props);
+      var imageStyle = (this.props.icon ? {
+        backgroundImage: "url('/ext/"+this.props.key+"/"+this.props.icon+"')"
+      } : {})
       return (
         <li className={className}>
-          <div className='img'></div>
+          <div style={imageStyle} className='img'></div>
           <span>{this.props.title}</span>
         </li>
       )
