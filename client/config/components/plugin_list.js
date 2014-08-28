@@ -12,15 +12,17 @@ module.exports = function (React) {
   var Column = require('./column')(React);
   var Plugin = require('./plugin')(React);
 
-  var EnabledPlugins = React.createClass({
+  var PluginList = React.createClass({
     render: function () {
-      var plugins = this.props.plugins;
+      var keyword = this.props.keyword;
+      var allPlugins = this.props.all;
       var renderPlugins = function(column) {
-        return <ul className="enabled-plugins-list">{
+        return <ul className={keyword+"-plugins-list"}>{
           _.map(column.props.items, function (plugin) {
             return (
               <Plugin key={plugin.id}
-                title={plugins[plugin.id].title}
+                icon={allPlugins[plugin.id].icon}
+                title={allPlugins[plugin.id].title}
                 enabled={plugin.enabled}
               />
             )
@@ -28,17 +30,17 @@ module.exports = function (React) {
         }</ul>
       }
       var hintStyle = {
-        display: (this.props.enabled_plugins.length ? 'none' : '')
+        display: (this.props.plugins.length ? 'none' : '')
       }
       return (
-        <div className="enabled-plugins">
-          <h3>Active Plugins</h3>
+        <div className={keyword+"-plugins"}>
+          <h3>{this.props.heading}</h3>
           <span style={hintStyle} className="drop-here">Drag and drop here</span>
-          <Column items={this.props.enabled_plugins} renderItems={renderPlugins} dropzone={this.props.dropzone} />
+          <Column items={this.props.plugins} renderItems={renderPlugins} dropzone={this.props.dropzone} />
         </div>
       )
     }
   });
 
-  return EnabledPlugins
+  return PluginList
 }

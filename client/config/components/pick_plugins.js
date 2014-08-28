@@ -11,8 +11,7 @@ var _ = {
 }
 
 module.exports = function (React) {
-  var EnabledPlugins = require('./enabled_plugins')(React);
-  var DisabledPlugins = require('./disabled_plugins')(React);
+  var PluginList = require('./plugin_list')(React);
 
   var PickPlugins = React.createClass({
     render: function () {
@@ -25,14 +24,18 @@ module.exports = function (React) {
              Plugins are run in the order they are specified here. Active plugins can be
              configured by clicking their corresponding tabs on the left.
           </p>
-          <EnabledPlugins
-            plugins={this.props.plugins}
-            enabled_plugins={this.props.enabled_plugins}
+          <PluginList
+            keyword='enabled'
+            heading='Active Plugins'
+            all={this.props.plugins}
+            plugins={this.props.enabled_plugins}
             dropzone={this.enabledDropzone}
           />
-          <DisabledPlugins
-            plugins={this.props.plugins}
-            disabled_plugins={this.props.disabled_plugins}
+          <PluginList
+            keyword='disabled'
+            heading='Available Plugins'
+            all={this.props.plugins}
+            plugins={this.props.disabled_plugins}
             dropzone={this.disabledDropzone}
           />
         </div>
