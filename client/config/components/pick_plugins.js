@@ -7,8 +7,9 @@ module.exports = function (React) {
 
   var PickPlugins = React.createClass({
     render: function () {
+      console.log(this.props);
       var allPlugins = this.props.plugins
-        , enabled = this.props.enabled_plugins
+        , enabled = this.props.branch.plugins
         , disabled = this.props.disabled_plugins
       return (
         <div className="pick-plugins">

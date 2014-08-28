@@ -41,6 +41,13 @@ module.exports = function () {
             } else {
               scope.disablePlugin(plugin, e.transfer.index);
             }
+            pp.setProps({
+              plugins: scope.plugins,
+              branch: scope.branch,
+              disabled_plugins: scope.disabled_plugins[scope.branch.name],
+              dragged: dragged
+            });
+            //e.el.remove()
           } else {
             swaps()
             scope.savePluginOrder()
@@ -48,13 +55,14 @@ module.exports = function () {
         })
       }
 
-      scope.$pickPlugins = React.renderComponent(
-        <PickPlugins plugins={scope.plugins}
-          enabled_plugins={scope.branch.plugins}
+
+      var pp = window.pp = React.renderComponent(
+        <PickPlugins
+          plugins={scope.plugins} branch={scope.branch}
           disabled_plugins={scope.disabled_plugins[scope.branch.name]}
           dragged={dragged}
         />, $mount.get(0)
-      );
+      )
     }
   }
 }

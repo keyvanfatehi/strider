@@ -30,7 +30,7 @@ module.exports = function (React) {
               /> Enabled
             </label>
             :''}
-            {this.props.hasStatusBlock ?
+            {(this.props.active && this.props.hasStatusBlock) ?
             <label type="checkbox">
               <input onChange={this.boolToggler('showStatus')}
                 checked={this.state.showStatus} type="checkbox"
