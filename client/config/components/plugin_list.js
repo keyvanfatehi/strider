@@ -20,10 +20,14 @@ module.exports = function (React) {
         return <ul className={keyword+"-plugins-list"}>{
           _.map(column.props.items, function (plugin) {
             return (
-              <Plugin key={plugin.id}
+              <Plugin
+                key={plugin.id}
                 icon={allPlugins[plugin.id].icon}
                 title={allPlugins[plugin.id].title}
                 enabled={plugin.enabled}
+                hasStatusBlock={statusBlocks.job[plugin.id]}
+                showStatus={plugin.showStatus}
+                active={keyword === 'enabled'}
               />
             )
           })
